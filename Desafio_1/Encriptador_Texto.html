@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>ENCRIPTADOR</title>
+  <link rel="stylesheet" href="Css/Style.css">
+</head>
+<body>
+
+  <header>
+    <h1 class="main-title">ENCRIPTADOR DE TEXTO</h1>
+    <p class="subtitle">Diviertete convirtiendo tus textos en mensajes secretos y compartelos con tus amigos</p>
+      
+      
+  </header>
+
+  <main>
+    <div class="cards">
+      <div class="card card--red card--left"  >
+        <h3 class="card_text">Solo ingresar letras minusculas, sin ningun acento (comillas, tildes, etc).</h3>
+        <input class="text" id="input" type="text" placeholder="Ingrese texto aqui">
+        <button class="button" id="button1">ENCRIPTAR</button>
+      </div>
+      <div class="card card--blue card--right">
+        <h3 class="card_title">Mensaje Encriptado</h3>
+        <input class="text" id="desencriptar" type="text">
+        <button class="button" id="copy">COPIAR</button>
+        <button class="button" id="button2">DESENCRIPTAR</button>
+      </div>
+      
+    </div>
+      
+
+  </main>
+  
+</body>
+  <script>
+		
+    let input = document.getElementById("input");
+    input.focus();
+
+  
+  
+    function encriptar(){
+      let frase = input.value;
+      frase = frase.replace(/e/g, "enter");
+      frase = frase.replace(/i/g, "imes"); 
+      frase = frase.replace(/a/g, "ai"); 
+      frase = frase.replace(/o/g, "ober"); 
+      frase = frase.replace(/u/g, "ufat"); 
+      document.getElementById("desencriptar").value = frase;
+      document.getElementById("input").value = "";
+      
+
+  }
+
+    let button = document.getElementById("button1");
+    button.onclick = encriptar;
+
+    function desencriptar(){
+      let input = document.getElementById("desencriptar");
+      let frase = input.value;
+      frase = frase.replace(/enter/g, "e");
+      frase = frase.replace(/imes/g, "i"); 
+      frase = frase.replace(/ai/g, "a"); 
+      frase = frase.replace(/ober/g, "o"); 
+      frase = frase.replace(/ufat/g, "u"); 
+      document.getElementById("input").value = frase;
+      document.getElementById("desencriptar").value = "";
+      
+
+  }
+
+    let button2 = document.getElementById("button2");
+    button2.onclick = desencriptar;
+
+    function copy(){
+      let copyText = document.getElementById("desencriptar");
+      copyText.select();
+      document.execCommand("copy");
+      alert("Copiado al portapapeles");
+      
+    }
+
+    document.getElementById("copy").addEventListener("click",copy);
+
+
+
+  </script>
+
+
+
+
+
+</html>
